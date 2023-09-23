@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { postData } from './api';
 
+//Main fuction
 function App() {
   const [message, setMessage] = useState<string>('');
   const [postResponse, setPostResponse] = useState<string>('');
@@ -14,7 +15,7 @@ function App() {
       sendToBackend(oauthToken, oauthVerifier);
     }
   }, []);
-
+  //Send to backend
   const sendToBackend = async (token: string | null, verifier: string | null) => {
     if (token && verifier) {
       try {
@@ -28,7 +29,7 @@ function App() {
       }
     }
   };
-
+  //Handle post
   const handlePostRequest = async () => {
     try {
       const response = await postData('/twitter', 'GET', "");
